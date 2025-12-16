@@ -12,6 +12,7 @@ import {
   CheckCircle,
   XCircle,
 } from 'lucide-react';
+import { API_BASE_URL } from './config';
 
 interface Log {
   _id: string;
@@ -46,7 +47,7 @@ export default function LogsPage() {
     setError(null);
     try {
       const response = await fetch(
-        'https://twinverses.in/api/v1/internal/getAllLogs'
+        `${API_BASE_URL}/api/v1/internal/getAllLogs`
       );
       if (!response.ok) throw new Error('Failed to fetch logs');
       const data: Log[] = await response.json();
@@ -300,7 +301,7 @@ export default function LogsPage() {
                       Person
                     </p>
                     <img
-                      src={"https://devbackendpersonimage.s3.ap-south-1.amazonaws.com/"+log.personImage}
+                      src={"https://twin-devbackend-personimage.s3.ap-south-1.amazonaws.com/"+log.personImage}
                       alt='Person'
                       className='w-full h-24 object-contain rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200'
                     />
@@ -311,7 +312,7 @@ export default function LogsPage() {
                       Cloth
                     </p>
                     <img
-                      src={"https://devbackendclothimage.s3.ap-south-1.amazonaws.com/"+log.clothImage}
+                      src={"https://twin-devbackend-clothimage.s3.ap-south-1.amazonaws.com/"+log.clothImage}
                       alt='Cloth'
                       className='w-full h-24 object-contain rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200'
                     />
@@ -322,7 +323,7 @@ export default function LogsPage() {
                       Result
                     </p>
                     <img
-                      src={"https://devbackendresultimage.s3.ap-south-1.amazonaws.com/"+log.resultImage}
+                      src={"https://twin-devbackend-resultimage.s3.ap-south-1.amazonaws.com/"+log.resultImage}
                       alt='Result'
                       className='w-full h-24 object-contain rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200'
                     />

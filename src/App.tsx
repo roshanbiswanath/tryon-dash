@@ -6,6 +6,7 @@ import {
   setBusinesses,
 } from './store/businessSlice';
 import { PlusIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
+import { API_BASE_URL } from './config';
 
 type Business = {
   _id: string;
@@ -33,7 +34,7 @@ export default function HomePage() {
       const fetchBusinesses = async () => {
         try {
           const response = await fetch(
-            'https://twinverses.in/api/v1/internal/getAllBusinesses'
+            `${API_BASE_URL}/api/v1/internal/getAllBusinesses`
           );
           if (!response.ok) {
             throw new Error('Failed to fetch businesses');
@@ -56,7 +57,7 @@ export default function HomePage() {
 
     try {
       const response = await fetch(
-        'https://twinverses.in/api/v1/internal/createBusiness',
+        `${API_BASE_URL}/api/v1/internal/createBusiness`,
         {
           method: 'POST',
           headers: {
